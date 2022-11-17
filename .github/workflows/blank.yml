@@ -34,9 +34,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          
-      - uses: addnab/docker-run-action@v3
+     
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate Angular Client
+        uses: openapi-generators/openapitools-generator-action@latest
         with:
-          image: openapitools/openapi-generator-cli:latest
-          options: -v ${{ github.workspace }}:/local
-          run: openapi-generator-cli generate -i https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml -g go -o /local/out/go
+          generator: typescript
+          config-url: https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml
+          
+      #- uses: addnab/docker-run-action@v3
+      #  with:
+      #    image: openapitools/openapi-generator-cli:latest
+      #    options: -v ${{ github.workspace }}:/local
+      #    run: openapi-generator-cli generate -i https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml -g go -o /local/out/go

@@ -40,7 +40,7 @@ jobs:
         uses: openapi-generators/openapitools-generator-action@v1.3.0
         with:
           generator: typescript
-          config-url: https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml
+          openapi-url: https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml
           
       #- uses: addnab/docker-run-action@v3
       #  with:

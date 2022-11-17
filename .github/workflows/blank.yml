@@ -39,6 +39,4 @@ jobs:
         with:
           image: openapitools/openapi-generator-cli:latest
           options: -v ${{ github.workspace }}:/local
-          run: |
-            echo "Running Script"
-            openapitools/openapi-generator-cli generate -i https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml -g go -o /local/out/go
+          run: openapitools/openapi-generator-cli generate -i https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml -g go -o /local/out/go

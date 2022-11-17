@@ -29,6 +29,13 @@ jobs:
         with:
           generator: typescript
           openapi-url: https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml
+      
+      # Commit generated code back into repo
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+          add: typescript-client
+
           
       # Failed initial attempt
       # - uses: addnab/docker-run-action@v3

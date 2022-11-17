@@ -1,13 +1,11 @@
-# This is a basic workflow to help you get started with Actions
+# Build OpenAPI Client Library from spec
 
-name: CI
+name: ci:Generate OpenAPI Client Library
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -25,16 +23,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-     
       # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
       - name: Generate Angular Client
         uses: openapi-generators/openapitools-generator-action@v1.3.0
@@ -42,7 +30,8 @@ jobs:
           generator: typescript
           openapi-url: https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml
           
-      #- uses: addnab/docker-run-action@v3
+      # Failed initial attempt
+      # - uses: addnab/docker-run-action@v3
       #  with:
       #    image: openapitools/openapi-generator-cli:latest
       #    options: -v ${{ github.workspace }}:/local
